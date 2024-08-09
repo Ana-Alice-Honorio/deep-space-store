@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue';
-import Home from '../src/views/HomePage.vue';
+import HeaderComponent from "./components/HeaderComponent.vue";
+import Home from "../src/views/HomePage.vue";
 
 export default {
   components: {
@@ -19,7 +19,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
-
+<style></style>
