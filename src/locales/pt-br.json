@@ -8,5 +8,10 @@
     "title": "Sucesso!",
     "message": "Seu pedido foi realizado com sucesso.",
     "goHome": "Voltar ao Início"
+  },
+  "notfound": {
+    "title": "Página Não Encontrada",
+    "message": "Desculpe, a página que você está procurando não existe.",
+    "goHome": "Voltar ao Início"
   }
 }
