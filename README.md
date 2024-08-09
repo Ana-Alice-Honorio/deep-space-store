@@ -18,7 +18,6 @@ the payment.
   - [vuetify](https://vuetifyjs.com/en/)
   - [vue i18n](https://vue-i18n.intlify.dev/)
   - [Mock Service Worker (msw)](https://mswjs.io/)
-  - [Axios](https://v2.vuejs.org/v2/cookbook/using-axios-to-consume-apis.html?redirect=true)
 
 ## Project setup
 ```
