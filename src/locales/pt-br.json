@@ -1,8 +1,12 @@
 {
-    "homepage": {
-      "title": "Bem-vindo à nossa loja",
-      "products": "Produtos",
-      "buy": "Comprar"
-    }
+  "homepage": {
+    "title": "Bem-vindo à nossa loja",
+    "products": "Produtos",
+    "buy": "Comprar"
+  },
+  "successpage": {
+    "title": "Sucesso!",
+    "message": "Seu pedido foi realizado com sucesso.",
+    "goHome": "Voltar ao Início"
   }
-  
+}

@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 
@@ -25,37 +26,27 @@ export default {
   components: {
     ProductCard,
   },
-  data() {
-    return {
-      products: [],
-      offer: null,
+  setup() {
+    const products = ref([]);
+    const offer = ref(null);
+
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/api/products");
+        products.value = response.data;
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
     };
-  },
-  mounted() {
-    this.fetchProducts();
-  },
-  methods: {
-    fetchProducts() {
-      axios
-        .get("/api/products")
-        .then((response) => {
-          this.products = response.data;
-        })
-        .catch((error) => {
-          console.error("Erro ao buscar produtos:", error);
-        });
-    },
-    fetchOffer() {
-      const OFFER_CODE = "miniatura-enterprise";
-      axios
-        .get(`/offers/${OFFER_CODE}`)
-        .then((response) => {
-          this.offer = response.data;
-        })
-        .catch((error) => {
-          console.error("Erro ao buscar oferta:", error);
-        });
-    },
+
+    onMounted(() => {
+      fetchProducts();
+    });
+
+    return {
+      products,
+      offer,
+    };
   },
 };
 </script>
