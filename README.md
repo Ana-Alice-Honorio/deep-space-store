@@ -17,7 +17,7 @@ the payment.
   - [cypress](https://www.cypress.io/)
   - [vuetify](https://vuetifyjs.com/en/)
   - [vue i18n](https://vue-i18n.intlify.dev/)
-  - [Mock Service Worker (msw)](https://mswjs.io/)
+  - [Axios mock adapter](https://www.npmjs.com/package/axios-mock-adapter)
 
 ## Project setup
 ```
