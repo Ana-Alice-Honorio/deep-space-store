@@ -42,8 +42,14 @@
             <span>{{ errors.phone[0] }}</span>
           </div>
 
-          <v-btn type="submit" color="primary" class="submit-button">
-            {{ $t("personDataForm.next") }}
+          <v-btn
+            type="submit"
+            color="primary"
+            class="submit-button"
+            :disabled="isLoading || !isFormValid"
+          >
+            <v-icon v-if="isLoading" small>mdi-loading</v-icon>
+            {{ isLoading ? "Carregando..." : $t("personDataForm.next") }}
           </v-btn>
         </v-form>
       </v-col>
@@ -52,11 +58,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "PersonDataForm",
   setup() {
+    const router = useRouter();
     const name = ref("");
     const email = ref("");
     const phone = ref("");
@@ -65,6 +73,22 @@ export default defineComponent({
       email: [],
       phone: [],
     });
+    const isLoading = ref(false);
+
+    const isFormValid = computed(() => {
+      return (
+        name.value &&
+        phone.value &&
+        errors.value.name.length === 0 &&
+        errors.value.phone.length === 0
+      );
+    });
+
+    const goToDeliveryData = () => {
+      router.push({
+        name: "DeliveryData",
+      });
+    };
 
     const clearError = (field) => {
       errors.value[field] = [];
@@ -113,11 +137,17 @@ export default defineComponent({
         !errors.value.phone.length &&
         !errors.value.email.length
       ) {
-        console.log("Form submitted with:", {
-          name: name.value,
-          email: email.value,
-          phone: phone.value,
-        });
+        isLoading.value = true;
+
+        setTimeout(() => {
+          console.log("Form submitted with:", {
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+          });
+          isLoading.value = false;
+          goToDeliveryData();
+        }, 2000);
       }
     };
 
@@ -129,6 +159,9 @@ export default defineComponent({
       formatPhone,
       submitForm,
       clearError,
+      goToDeliveryData,
+      isLoading,
+      isFormValid,
     };
   },
 });

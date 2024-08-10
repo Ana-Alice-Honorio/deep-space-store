@@ -3,6 +3,7 @@ import Home from "../views/HomePage.vue";
 import SuccessPage from "../views/SucessView.vue";
 import NotFound from "../views/NotFound.vue";
 import PersonDataForm from "../components/PersonDataForm.vue";
+import DeliveryData from "@/components/DeliveryData.vue";
 
 const routes = [
   {
@@ -14,6 +15,12 @@ const routes = [
     path: "/person-data/:productId",
     name: "PersonDataForm",
     component: PersonDataForm,
+    props: true,
+  },
+  {
+    path: "/deliveryData",
+    name: "DeliveryData",
+    component: DeliveryData,
     props: true,
   },
   {
