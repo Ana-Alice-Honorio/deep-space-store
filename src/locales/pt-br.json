@@ -25,5 +25,17 @@
     "required": "Campo obrigatório.",
     "invalidEmail": "E-mail inválido.",
     "invalidPhone": "Telefone deve ter 10 ou 11 dígitos."
+  },
+  "deliveryAddressForm": {
+    "cep": "CEP",
+    "street": "Logradouro",
+    "number": "Número",
+    "neighborhood": "Bairro",
+    "city": "Cidade",
+    "state": "Estado",
+    "next": "Próximo",
+    "cepNotFound": "CEP não encontrado.",
+    "invalidCep": "CEP inválido. O CEP deve ter 8 dígitos.",
+    "required": "Todos os campos obrigatórios devem ser preenchidos."
   }
 }

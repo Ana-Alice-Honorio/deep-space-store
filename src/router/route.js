@@ -4,6 +4,7 @@ import SuccessPage from "../views/SucessView.vue";
 import NotFound from "../views/NotFound.vue";
 import PersonDataForm from "../components/PersonDataForm.vue";
 import DeliveryData from "@/components/DeliveryData.vue";
+import CheckoutForm from "@/components/CheckoutForm.vue";
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     name: "DeliveryData",
     component: DeliveryData,
     props: true,
+  },
+  {
+    path: "/checkout",
+    name: "Checkout",
+    component: CheckoutForm,
   },
   {
     path: "/success",
