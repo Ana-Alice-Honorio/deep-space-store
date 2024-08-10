@@ -50,8 +50,8 @@
     "cardHolderLabel": "Nome do Titular",
     "expirationDateLabel": "Data de Validade",
     "cvvLabel": "CVV",
-    "boletoInstructions": "Instruções para pagamento com Boleto.",
-    "pixInstructions": "Instruções para pagamento com Pix.",
+    "boletoInstructions": "Copiar o código do Boleto",
+    "pixInstructions": "Copiar o código pix",
     "nextButton": "Próximo"
   }
 }

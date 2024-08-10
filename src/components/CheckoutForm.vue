@@ -31,7 +31,15 @@
             ></v-radio>
           </v-radio-group>
 
-          <v-btn type="submit" color="primary">{{
+          <PaymentOptions
+            v-if="selectedPaymentMethod"
+            :paymentMethod="selectedPaymentMethod"
+            :qrCodeImage="qrCodeImage"
+            :billImage="billImage"
+            :billCode="billCode"
+          />
+
+          <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
             $t("checkoutForm.nextButton")
           }}</v-btn>
         </v-form>
@@ -41,10 +49,14 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
+import PaymentOptions from "./PayForm.vue";
 
 export default {
+  components: {
+    PaymentOptions,
+  },
   setup() {
     const store = useStore();
     const form = ref(null);
@@ -52,6 +64,9 @@ export default {
     const cpf = ref("");
     const selectedPaymentMethod = ref(null);
     const errors = ref({ cpf: [] });
+    const qrCodeImage = require("@/assets/images/pix.png");
+    const billImage = require("@/assets/images/cod.png");
+    const billCode = "Código do Boleto";
 
     const validateCpf = () => {
       const cpfCleaned = cpf.value.replace(/[^\d]+/g, "");
@@ -103,6 +118,14 @@ export default {
       }
     };
 
+    const isFormValid = computed(() => {
+      return (
+        cpf.value.length === 11 &&
+        errors.value.cpf.length === 0 &&
+        selectedPaymentMethod.value !== null
+      );
+    });
+
     return {
       form,
       valid,
@@ -111,6 +134,10 @@ export default {
       errors,
       validateCpf,
       submitForm,
+      qrCodeImage,
+      billImage,
+      billCode,
+      isFormValid,
     };
   },
 };
