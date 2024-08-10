@@ -4,6 +4,7 @@ import { createI18n } from "vue-i18n";
 import ptBR from "../src/locales/pt-br.json";
 import "../src/mocks/webserver";
 import router from "../src/router/route";
+import store from "./store";
 
 const i18n = createI18n({
   locale: "pt-BR",
@@ -27,4 +28,4 @@ const vuetify = createVuetify({
   },
 });
 
-createApp(App).use(router).use(i18n).use(vuetify).mount("#app");
+createApp(App).use(router).use(store).use(i18n).use(vuetify).mount("#app");
