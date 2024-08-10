@@ -1,64 +1,68 @@
 <template>
-  <v-form ref="form" @submit.prevent="nextStep" class="form">
-    <v-text-field
-      variant="solo-filled"
-      v-model="cep"
-      :label="$t('deliveryAddressForm.cep')"
-      placeholder="Digite seu CEP"
-      required
-      @blur="fetchAddress"
-      @input="clearError"
-    ></v-text-field>
-    <v-text-field
-      variant="solo-filled"
-      v-model="deliveryAddress.street"
-      :label="$t('deliveryAddressForm.street')"
-      placeholder="Logradouro"
-      required
-      @input="clearError"
-    ></v-text-field>
-    <v-text-field
-      variant="solo-filled"
-      v-model="deliveryAddress.number"
-      :label="$t('deliveryAddressForm.number')"
-      placeholder="Número da residência"
-      required
-      @input="clearError"
-    ></v-text-field>
-    <v-text-field
-      variant="solo-filled"
-      v-model="deliveryAddress.neighborhood"
-      :label="$t('deliveryAddressForm.neighborhood')"
-      placeholder="Bairro"
-      required
-      @input="clearError"
-    ></v-text-field>
-    <v-text-field
-      variant="solo-filled"
-      v-model="deliveryAddress.city"
-      :label="$t('deliveryAddressForm.city')"
-      placeholder="Cidade"
-      required
-      @input="clearError"
-    ></v-text-field>
-    <v-combobox
-      :label="$t('deliveryAddressForm.state')"
-      :items="ufs"
-      variant="solo-filled"
-      placeholder="Selecione o estado"
-      v-model="deliveryAddress.state"
-      required
-      @input="clearError"
-    ></v-combobox>
+  <v-row justify="center" align="center">
+    <v-col cols="12" sm="8" md="6">
+      <v-form ref="form" @submit.prevent="nextStep" class="form">
+        <v-text-field
+          variant="solo-filled"
+          v-model="cep"
+          :label="$t('deliveryAddressForm.cep')"
+          placeholder="Digite seu CEP"
+          required
+          @blur="fetchAddress"
+          @input="clearError"
+        ></v-text-field>
+        <v-text-field
+          variant="solo-filled"
+          v-model="deliveryAddress.street"
+          :label="$t('deliveryAddressForm.street')"
+          placeholder="Logradouro"
+          required
+          @input="clearError"
+        ></v-text-field>
+        <v-text-field
+          variant="solo-filled"
+          v-model="deliveryAddress.number"
+          :label="$t('deliveryAddressForm.number')"
+          placeholder="Número da residência"
+          required
+          @input="clearError"
+        ></v-text-field>
+        <v-text-field
+          variant="solo-filled"
+          v-model="deliveryAddress.neighborhood"
+          :label="$t('deliveryAddressForm.neighborhood')"
+          placeholder="Bairro"
+          required
+          @input="clearError"
+        ></v-text-field>
+        <v-text-field
+          variant="solo-filled"
+          v-model="deliveryAddress.city"
+          :label="$t('deliveryAddressForm.city')"
+          placeholder="Cidade"
+          required
+          @input="clearError"
+        ></v-text-field>
+        <v-combobox
+          :label="$t('deliveryAddressForm.state')"
+          :items="ufs"
+          variant="solo-filled"
+          placeholder="Selecione o estado"
+          v-model="deliveryAddress.state"
+          required
+          @input="clearError"
+        ></v-combobox>
 
-    <div v-if="errorMessage" class="error-message">
-      <v-icon color="red" small>mdi-alert-circle</v-icon>
-      <span>{{ errorMessage }}</span>
-    </div>
-    <v-btn type="submit" color="primary" :disabled="!isFormValid">
-      {{ $t("deliveryAddressForm.next") }}
-    </v-btn>
-  </v-form>
+        <div v-if="errorMessage" class="error-message">
+          <v-icon color="red" small>mdi-alert-circle</v-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+        <v-btn type="submit" color="primary" :disabled="!isFormValid">
+          {{ $t("deliveryAddressForm.next") }}
+        </v-btn>
+      </v-form>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 {
   "homepage": {
-    "title": "Bem-vindo à nossa loja",
+    "title": "Deep Space Store",
     "products": "Produtos",
     "buy": "Comprar"
   },
@@ -37,5 +37,21 @@
     "cepNotFound": "CEP não encontrado.",
     "invalidCep": "CEP inválido. O CEP deve ter 8 dígitos.",
     "required": "Todos os campos obrigatórios devem ser preenchidos."
+  },
+  "checkoutForm": {
+    "cpfLabel": "CPF",
+    "paymentMethodLabel": "Forma de Pagamento",
+    "boletoOption": "Boleto",
+    "creditCardOption": "Cartão de Crédito",
+    "pixOption": "Pix",
+    "requiredField": "Este campo é obrigatório.",
+    "invalidCpf": "CPF inválido.",
+    "cardNumberLabel": "Número do Cartão",
+    "cardHolderLabel": "Nome do Titular",
+    "expirationDateLabel": "Data de Validade",
+    "cvvLabel": "CVV",
+    "boletoInstructions": "Instruções para pagamento com Boleto.",
+    "pixInstructions": "Instruções para pagamento com Pix.",
+    "nextButton": "Próximo"
   }
 }
