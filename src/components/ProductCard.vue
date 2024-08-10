@@ -11,13 +11,16 @@
       <p>{{ product.publisher }}</p>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="primary">{{ $t("homepage.buy") }}</v-btn>
+      <v-btn color="primary" @click="goToPersonData">{{
+        $t("homepage.buy")
+      }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "ProductCard",
@@ -26,6 +29,20 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const router = useRouter();
+
+    const goToPersonData = () => {
+      router.push({
+        name: "PersonDataForm",
+        params: { productId: props.product.id },
+      });
+    };
+
+    return {
+      goToPersonData,
+    };
   },
 });
 </script>

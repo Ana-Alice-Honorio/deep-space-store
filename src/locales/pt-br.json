@@ -13,5 +13,17 @@
     "title": "Página Não Encontrada",
     "message": "Desculpe, a página que você está procurando não existe.",
     "goHome": "Voltar ao Início"
+  },
+  "personDataForm": {
+    "name": "Nome",
+    "namePlaceholder": "Digite seu nome completo",
+    "email": "E-mail",
+    "emailPlaceholder": "Digite seu e-mail (opcional)",
+    "phone": "Telefone",
+    "phonePlaceholder": "Digite seu telefone (10 ou 11 dígitos)",
+    "next": "Próximo",
+    "required": "Campo obrigatório.",
+    "invalidEmail": "E-mail inválido.",
+    "invalidPhone": "Telefone deve ter 10 ou 11 dígitos."
   }
 }
