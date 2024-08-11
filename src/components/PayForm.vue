@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   props: {
@@ -60,29 +60,35 @@ export default {
     },
     qrCodeImage: {
       type: String,
-      default: require("@/assets/images/pix.png"),
+      required: true,
     },
     billImage: {
       type: String,
-      default: require("@/assets/images/cod.png"),
+      required: true,
     },
     billCode: {
       type: String,
-      default: "Código do Boleto",
+      required: true,
     },
   },
+  computed: {
+    ...mapState("payment", [
+      "cardNumber",
+      "cardHolder",
+      "expirationDate",
+      "cvv",
+    ]),
+  },
+  methods: {
+    ...mapActions("payment", [
+      "updateCardNumber",
+      "updateCardHolder",
+      "updateExpirationDate",
+      "updateCvv",
+    ]),
+  },
   setup() {
-    const cardNumber = ref("");
-    const cardHolder = ref("");
-    const expirationDate = ref("");
-    const cvv = ref("");
-
-    return {
-      cardNumber,
-      cardHolder,
-      expirationDate,
-      cvv,
-    };
+    return {};
   },
 };
 </script>

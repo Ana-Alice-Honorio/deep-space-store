@@ -40,4 +40,8 @@ mock.onGet("/api/products").reply(200, [
   },
 ]);
 
+mock.onPost(/\/offers\/\w+\/create_order/).reply(201, {
+  message: "Pedido criado com sucesso",
+});
+
 export default mock;

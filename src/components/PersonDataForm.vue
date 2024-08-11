@@ -46,10 +46,9 @@
             type="submit"
             color="primary"
             class="submit-button"
-            :disabled="isLoading || !isFormValid"
+            :disabled="!isFormValid"
           >
-            <v-icon v-if="isLoading" small>mdi-loading</v-icon>
-            {{ isLoading ? "Carregando..." : $t("personDataForm.next") }}
+            {{ $t("personDataForm.next") }}
           </v-btn>
         </v-form>
       </v-col>
@@ -73,7 +72,6 @@ export default defineComponent({
       email: [],
       phone: [],
     });
-    const isLoading = ref(false);
 
     const isFormValid = computed(() => {
       return (
@@ -137,17 +135,12 @@ export default defineComponent({
         !errors.value.phone.length &&
         !errors.value.email.length
       ) {
-        isLoading.value = true;
-
-        setTimeout(() => {
-          console.log("Form submitted with:", {
-            name: name.value,
-            email: email.value,
-            phone: phone.value,
-          });
-          isLoading.value = false;
-          goToDeliveryData();
-        }, 2000);
+        console.log("Form submitted with:", {
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+        });
+        goToDeliveryData();
       }
     };
 
@@ -160,7 +153,6 @@ export default defineComponent({
       submitForm,
       clearError,
       goToDeliveryData,
-      isLoading,
       isFormValid,
     };
   },
