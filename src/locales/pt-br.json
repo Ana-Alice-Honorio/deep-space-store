@@ -52,6 +52,8 @@
     "cvvLabel": "CVV",
     "boletoInstructions": "Copiar o código do Boleto",
     "pixInstructions": "Copiar o código pix",
-    "nextButton": "Próximo"
+    "nextButton": "Próximo",
+    "finish": "Finalizar pedido",
+    "close": "Fechar"
   }
 }

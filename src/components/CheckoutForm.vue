@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
       <v-container>
-        <v-form ref="form" v-model="valid" @submit.prevent="submitForm">
+        <v-form ref="form" v-model="valid" @submit.prevent="openModal">
           <v-text-field
             variant="solo-filled"
             v-model="cpf"
@@ -39,9 +39,24 @@
             :billCode="billCode"
           />
 
-          <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
-            $t("checkoutForm.nextButton")
-          }}</v-btn>
+          <v-btn @click="openModal" color="primary" :disabled="!isFormValid">
+            {{ $t("checkoutForm.nextButton") }}
+          </v-btn>
+
+          <v-dialog v-model="modal" max-width="600px">
+            <v-card>
+              <ResumeOrder :cpf="cpf" :paymentMethod="selectedPaymentMethod" />
+
+              <v-card-actions>
+                <v-btn color="blue darken-1" text @click="modal = false">
+                  {{ $t("checkoutForm.close") }}</v-btn
+                >
+                <v-btn color="primary" @click="confirmOrder">{{
+                  $t("checkoutForm.finish")
+                }}</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-form>
       </v-container>
     </v-col>
@@ -52,10 +67,12 @@
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import PaymentOptions from "./PayForm.vue";
+import ResumeOrder from "./ResumeOrder.vue";
 
 export default {
   components: {
     PaymentOptions,
+    ResumeOrder,
   },
   setup() {
     const store = useStore();
@@ -67,7 +84,13 @@ export default {
     const qrCodeImage = require("@/assets/images/pix.png");
     const billImage = require("@/assets/images/cod.png");
     const billCode = "Código do Boleto";
+    const modal = ref(false);
 
+    const openModal = () => {
+      if (isFormValid.value) {
+        modal.value = true;
+      }
+    };
     const validateCpf = () => {
       const cpfCleaned = cpf.value.replace(/[^\d]+/g, "");
       errors.value.cpf = [];
@@ -109,13 +132,12 @@ export default {
       }
     };
 
-    const submitForm = () => {
-      if (form.value.validate() && errors.value.cpf.length === 0) {
-        store.dispatch("setCheckoutData", {
-          cpf: cpf.value,
-          paymentMethod: selectedPaymentMethod.value,
-        });
-      }
+    const confirmOrder = () => {
+      store.dispatch("setCheckoutData", {
+        cpf: cpf.value,
+        paymentMethod: selectedPaymentMethod.value,
+      });
+      modal.value = false;
     };
 
     const isFormValid = computed(() => {
@@ -133,11 +155,13 @@ export default {
       selectedPaymentMethod,
       errors,
       validateCpf,
-      submitForm,
+      openModal,
+      confirmOrder,
       qrCodeImage,
       billImage,
       billCode,
       isFormValid,
+      modal,
     };
   },
 };
