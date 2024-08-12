@@ -17,14 +17,15 @@
         </v-btn>
       </div>
     </template>
-
     <template v-if="paymentMethod === 'creditCard'">
       <h3 class="title-credit">{{ $t("checkoutForm.creditCardOption") }}</h3>
       <v-text-field
         variant="solo-filled"
-        v-model="cardNumber"
+        v-model="formattedCardNumber"
         :label="$t('checkoutForm.cardNumberLabel')"
         required
+        @input="formatCardNumber"
+        maxlength="19"
       />
       <v-text-field
         variant="solo-filled"
@@ -34,9 +35,11 @@
       />
       <v-text-field
         variant="solo-filled"
-        v-model="expirationDate"
+        v-model="formattedExpirationDate"
         :label="$t('checkoutForm.expirationDateLabel')"
         required
+        @input="formatExpirationDate"
+        maxlength="5"
       />
       <v-text-field
         variant="solo-filled"
@@ -44,6 +47,8 @@
         :label="$t('checkoutForm.cvvLabel')"
         type="password"
         required
+        @input="limitCvv"
+        maxlength="3"
       />
     </template>
   </div>
@@ -78,6 +83,26 @@ export default {
       "expirationDate",
       "cvv",
     ]),
+    formattedCardNumber: {
+      get() {
+        return this.cardNumber;
+      },
+      set(value) {
+        this.updateCardNumber(
+          value.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1 ")
+        );
+      },
+    },
+    formattedExpirationDate: {
+      get() {
+        return this.expirationDate;
+      },
+      set(value) {
+        this.updateExpirationDate(
+          value.replace(/\D/g, "").replace(/(\d{2})(?=\d)/g, "$1/")
+        );
+      },
+    },
   },
   methods: {
     ...mapActions("payment", [
@@ -86,6 +111,22 @@ export default {
       "updateExpirationDate",
       "updateCvv",
     ]),
+    formatCardNumber(event) {
+      const value = event.target.value
+        .replace(/\D/g, "")
+        .replace(/(\d{4})(?=\d)/g, "$1 ");
+      this.formattedCardNumber = value;
+    },
+    formatExpirationDate(event) {
+      const value = event.target.value
+        .replace(/\D/g, "")
+        .replace(/(\d{2})(?=\d)/g, "$1/");
+      this.formattedExpirationDate = value;
+    },
+    limitCvv(event) {
+      const value = event.target.value.replace(/\D/g, "").slice(0, 3);
+      this.updateCvv(value);
+    },
   },
   setup() {
     return {};
