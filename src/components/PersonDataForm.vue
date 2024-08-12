@@ -59,11 +59,13 @@
 <script>
 import { defineComponent, ref, computed } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "PersonDataForm",
   setup() {
     const router = useRouter();
+    const store = useStore();
     const name = ref("");
     const email = ref("");
     const phone = ref("");
@@ -127,7 +129,7 @@ export default defineComponent({
         : [];
     };
 
-    const submitForm = () => {
+    const submitForm = async () => {
       validate();
 
       if (
@@ -135,7 +137,7 @@ export default defineComponent({
         !errors.value.phone.length &&
         !errors.value.email.length
       ) {
-        console.log("Form submitted with:", {
+        await store.dispatch("personalData/saveData", {
           name: name.value,
           email: email.value,
           phone: phone.value,

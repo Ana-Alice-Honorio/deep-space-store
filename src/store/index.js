@@ -4,6 +4,7 @@ import delivery from "./modules/delivery";
 import checkout from "./modules/checkout";
 import payment from "./modules/payment";
 import resume from "./modules/resume";
+import personalData from "./modules/personalData";
 
 const store = createStore({
   modules: {
@@ -12,6 +13,7 @@ const store = createStore({
     checkout,
     payment,
     resume,
+    personalData,
   },
 });
 
