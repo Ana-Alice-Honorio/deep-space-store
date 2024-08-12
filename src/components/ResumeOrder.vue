@@ -35,10 +35,10 @@
         </p>
       </v-card-text>
       <v-card-actions>
-        <v-btn color="primary" @click="closeModal">
+        <v-btn variant="tonal" @click="closeModal">
           {{ $t("checkoutForm.close") }}
         </v-btn>
-        <v-btn color="success" @click="finalizeOrder">
+        <v-btn class="custom-button" @click="finalizeOrder">
           {{ $t("checkoutForm.finish") }}
         </v-btn>
       </v-card-actions>
@@ -142,5 +142,10 @@ export default {
 <style scoped>
 .v-dialog {
   backdrop-filter: blur(5px);
+}
+
+.custom-button {
+  background-color: #1976d2;
+  color: white;
 }
 </style>

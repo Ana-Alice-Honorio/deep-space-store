@@ -11,9 +11,9 @@
       <p>{{ product.publisher }}</p>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="primary" @click="goToPersonData">{{
-        $t("homepage.buy")
-      }}</v-btn>
+      <v-btn class="custom-button" @click="goToPersonData">
+        {{ $t("homepage.buy") }}
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -74,5 +74,9 @@ export default defineComponent({
 
 .text-content p {
   margin: 0;
+}
+.custom-button {
+  background-color: #1976d2;
+  color: white;
 }
 </style>
