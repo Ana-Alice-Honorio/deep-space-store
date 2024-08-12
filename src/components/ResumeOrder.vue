@@ -35,7 +35,7 @@
         </p>
       </v-card-text>
       <v-card-actions>
-        <v-btn variant="tonal" @click="closeModal">
+        <v-btn variant="tonal" class="close-button" @click="closeModal">
           {{ $t("checkoutForm.close") }}
         </v-btn>
         <v-btn class="custom-button" @click="finalizeOrder">
@@ -147,5 +147,10 @@ export default {
 .custom-button {
   background-color: #1976d2;
   color: white;
+  text-transform: none;
+}
+
+.close-button {
+  text-transform: none;
 }
 </style>

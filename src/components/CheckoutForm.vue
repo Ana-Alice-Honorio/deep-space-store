@@ -39,7 +39,12 @@
             :billCode="billCode"
           />
 
-          <v-btn @click="openModal" color="primary" :disabled="!isFormValid">
+          <v-btn
+            @click="openModal"
+            color="primary"
+            class="submit-form"
+            :disabled="!isFormValid"
+          >
             {{ $t("checkoutForm.nextButton") }}
           </v-btn>
 
@@ -205,5 +210,9 @@ export default {
   font-size: 12px;
   margin-top: -12px;
   margin-bottom: 12px;
+}
+
+.submit-form {
+  text-transform: none;
 }
 </style>

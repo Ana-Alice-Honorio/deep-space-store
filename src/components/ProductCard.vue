@@ -78,5 +78,6 @@ export default defineComponent({
 .custom-button {
   background-color: #1976d2;
   color: white;
+  text-transform: none;
 }
 </style>

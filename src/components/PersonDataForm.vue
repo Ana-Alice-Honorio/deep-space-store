@@ -174,4 +174,8 @@ export default defineComponent({
   margin-top: -12px;
   margin-bottom: 12px;
 }
+
+.submit-button {
+  text-transform: none;
+}
 </style>

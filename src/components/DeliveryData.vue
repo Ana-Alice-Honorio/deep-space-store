@@ -57,7 +57,12 @@
           <v-icon color="red" small>mdi-alert-circle</v-icon>
           <span>{{ errorMessage }}</span>
         </div>
-        <v-btn type="submit" color="primary" :disabled="!isFormValid">
+        <v-btn
+          type="submit"
+          color="primary"
+          class="submit-form"
+          :disabled="!isFormValid"
+        >
           {{ $t("deliveryAddressForm.next") }}
         </v-btn>
       </v-form>
@@ -221,5 +226,9 @@ export default {
   font-size: 12px;
   margin-top: -12px;
   margin-bottom: 12px;
+}
+
+.submit-form {
+  text-transform: none;
 }
 </style>
