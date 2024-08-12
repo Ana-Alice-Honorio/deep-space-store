@@ -43,20 +43,17 @@
             {{ $t("checkoutForm.nextButton") }}
           </v-btn>
 
-          <v-dialog v-model="modal" max-width="600px">
-            <v-card>
-              <ResumeOrder :cpf="cpf" :paymentMethod="selectedPaymentMethod" />
-
-              <v-card-actions>
-                <v-btn color="blue darken-1" text @click="modal = false">
-                  {{ $t("checkoutForm.close") }}</v-btn
-                >
-                <v-btn color="primary" @click="confirmOrder">{{
-                  $t("checkoutForm.finish")
-                }}</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+          <ResumeOrder
+            v-if="modal"
+            :isOpen="modal"
+            :product="selectedProduct"
+            :personalData="personalData"
+            :deliveryData="deliveryData"
+            :paymentMethod="selectedPaymentMethod"
+            :cpf="cpf"
+            :randomCode="randomCode"
+            @close="modal = false"
+          />
         </v-form>
       </v-container>
     </v-col>
@@ -76,8 +73,6 @@ export default {
   },
   setup() {
     const store = useStore();
-    const form = ref(null);
-    const valid = ref(false);
     const cpf = ref("");
     const selectedPaymentMethod = ref(null);
     const errors = ref({ cpf: [] });
@@ -85,12 +80,39 @@ export default {
     const billImage = require("@/assets/images/cod.png");
     const billCode = "Código do Boleto";
     const modal = ref(false);
+    const randomCode = ref(Math.random().toString(36).substring(2, 8));
+
+    const personalData = computed(() => {
+      return (
+        store.getters["personalData/personalData"] || {
+          name: "Não disponível",
+          email: "Não disponível",
+          phone: "Não disponível",
+        }
+      );
+    });
+    const deliveryData = computed(() => {
+      return (
+        store.getters["delivery/deliveryAddress"] || {
+          street: "Não disponível",
+          number: "",
+          neighborhood: "Não disponível",
+          city: "Não disponível",
+          state: "Não disponível",
+        }
+      );
+    });
+
+    const selectedProduct = computed(
+      () => store.getters["products/selectedProduct"] || {}
+    );
 
     const openModal = () => {
       if (isFormValid.value) {
         modal.value = true;
       }
     };
+
     const validateCpf = () => {
       const cpfCleaned = cpf.value.replace(/[^\d]+/g, "");
       errors.value.cpf = [];
@@ -132,10 +154,16 @@ export default {
       }
     };
 
+    const generateRandomCode = () => {
+      return Math.random().toString(36).substring(2, 8);
+    };
+
     const confirmOrder = () => {
+      const randomCode = generateRandomCode();
       store.dispatch("setCheckoutData", {
         cpf: cpf.value,
         paymentMethod: selectedPaymentMethod.value,
+        randomCode,
       });
       modal.value = false;
     };
@@ -149,8 +177,6 @@ export default {
     });
 
     return {
-      form,
-      valid,
       cpf,
       selectedPaymentMethod,
       errors,
@@ -162,6 +188,10 @@ export default {
       billCode,
       isFormValid,
       modal,
+      randomCode,
+      personalData,
+      deliveryData,
+      selectedProduct,
     };
   },
 };

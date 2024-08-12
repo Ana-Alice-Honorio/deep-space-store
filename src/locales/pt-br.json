@@ -55,5 +55,16 @@
     "nextButton": "Próximo",
     "finish": "Finalizar pedido",
     "close": "Fechar"
+  },
+  "resumeOrder": {
+    "title": "Resumo do Pedido",
+    "beneficiary": "Beneficiário",
+    "product": "Produto",
+    "name": "Nome",
+    "email": "Email",
+    "phone": "Telefone",
+    "address": "Endereço",
+    "paymentMethod": "Método de Pagamento",
+    "randomCode": "Código da Compra"
   }
 }

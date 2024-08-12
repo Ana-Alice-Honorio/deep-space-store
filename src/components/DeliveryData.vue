@@ -135,6 +135,7 @@ export default {
             city: data.localidade,
             state: data.uf,
           };
+
           store.dispatch(
             "delivery/updateDeliveryAddress",
             deliveryAddress.value

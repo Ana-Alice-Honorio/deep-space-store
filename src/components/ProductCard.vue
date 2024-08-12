@@ -21,6 +21,7 @@
 <script>
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "ProductCard",
@@ -33,7 +34,10 @@ export default defineComponent({
   setup(props) {
     const router = useRouter();
 
+    const store = useStore();
+
     const goToPersonData = () => {
+      store.dispatch("products/selectProduct", props.product);
       router.push({
         name: "PersonDataForm",
         params: { productId: props.product.id },
