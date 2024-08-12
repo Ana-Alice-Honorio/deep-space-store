@@ -10,34 +10,39 @@ a page where a buyer views an offer for a product and fills in their details to 
 the payment.
 
 ## Technologies used:
-  - [V@vue/cli 5.0.8](https://cli.vuejs.org/)
-  - [node v20.16.0](https://nodejs.org/pt)
-  - [vue router](https://router.vuejs.org/)
-  - [vuex](https://vuex.vuejs.org/)
-  - [cypress](https://www.cypress.io/)
-  - [vuetify](https://vuetifyjs.com/en/)
-  - [vue i18n](https://vue-i18n.intlify.dev/)
-  - [Axios mock adapter](https://www.npmjs.com/package/axios-mock-adapter)
+
+- [V@vue/cli 5.0.8](https://cli.vuejs.org/)
+- [node v20.16.0](https://nodejs.org/pt)
+- [vue router](https://router.vuejs.org/)
+- [vuex](https://vuex.vuejs.org/)
+- [vuetify](https://vuetifyjs.com/en/)
+- [vue i18n](https://vue-i18n.intlify.dev/)
+- [Axios mock adapter](https://www.npmjs.com/package/axios-mock-adapter)
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
