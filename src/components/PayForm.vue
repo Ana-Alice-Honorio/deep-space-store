@@ -32,7 +32,9 @@
         v-model="cardHolder"
         :label="$t('checkoutForm.cardHolderLabel')"
         required
+        @input="updateCardHolder($event.target.value)"
       />
+
       <v-text-field
         variant="solo-filled"
         v-model="formattedExpirationDate"
