@@ -3,13 +3,12 @@
 ![last commit](https://img.shields.io/github/last-commit/Ana-Alice-Honorio/deep-space-store?style=for-the-badge")
 ![Make to Alice](https://img.shields.io/badge/make-to%20Alice-D818A5")
 
-# 💳 Deep Space Store
+# 💳 Deep Space Store - Página de Pagamento
+## Sobre o Projeto
 
-Payment page for the fictional online store "Deep Space Store". This is
-a page where a buyer views an offer for a product and fills in their details to proceed
-the payment.
+O Deep Space Store é uma loja online fictícia, e este repositório contém a implementação da sua página de pagamento. O usuário pode visualizar uma oferta de um produto e preencher seus dados para efetuar o pagamento.
 
-## Technologies used:
+## Tecnologias Utilizadas
 
 - [V@vue/cli 5.0.8](https://cli.vuejs.org/)
 - [node v20.16.0](https://nodejs.org/pt)
@@ -19,30 +18,43 @@ the payment.
 - [vue i18n](https://vue-i18n.intlify.dev/)
 - [Axios mock adapter](https://www.npmjs.com/package/axios-mock-adapter)
 
-## Project setup
+## Estrutura do Projeto
+
+![estrutura de projetos](./src/assets/images/estrutura.png)
+
+
+## Como Executar o Projeto
+Certifique-se de ter o Node.js instalado em sua máquina.
+
+## Instalação
 
 ```
+git clone https://github.com/seu-usuario/deep-space-store.git
+cd deep-space-store
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## Executando o Projeto
+
+Para rodar a aplicação em ambiente de desenvolvimento:
 
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+Para gerar a versão de produção:
 
 ```
 npm run build
 ```
-
-### Lints and fixes files
+Para rodar a análise de código estático (lint):
 
 ```
 npm run lint
 ```
 
-### Customize configuration
+Para rodar os testes automatizados:
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+npm run test
+```
